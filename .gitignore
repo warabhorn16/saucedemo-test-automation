@@ -1,7 +1,27 @@
+# Python virtual environment
 .venv/
+venv/
+
+# Python cache
 __pycache__/
+*.py[cod]
+
+# Pytest cache
 .pytest_cache/
-*.pyc
-.DS_Store
-playwright-report/
+
+# Generated test reports
+reports/*.html
 test-results/
+playwright-report/
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# OS and editor files
+.DS_Store
+.vscode/
+
+# Temporary files
+*.log
