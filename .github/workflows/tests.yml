@@ -1,3 +1,4 @@
+
 name: Playwright UI Tests
 
 on:
@@ -29,3 +30,12 @@ jobs:
 
       - name: Run tests
         run: pytest -v
+
+      - name: Upload failure screenshots
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: failure-screenshots
+          path: test-results/screenshots/
+          if-no-files-found: ignore
+          retention-days: 7
