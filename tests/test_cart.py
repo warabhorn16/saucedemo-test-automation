@@ -3,7 +3,7 @@ from playwright.sync_api import expect
 from pages.cart_page import CartPage
 
 @pytest.mark.cart
-def test_tc_cart_001_remove_product_from_cart(
+def test_tc_cart_001_able_to_remove_a_product_from_the_cart_when_user_clicks_remove_on_the_cart_page(
     products_page
 ):
     product_name = products_page.add_product_to_cart()
@@ -19,7 +19,7 @@ def test_tc_cart_001_remove_product_from_cart(
     assert product_name not in cart_product_names
 
 @pytest.mark.cart
-def test_tc_cart_002_empty_cart_after_removing_all_products(
+def test_tc_cart_002_verify_that_the_cart_is_empty_after_user_removes_all_products(
     products_page
 ):
     
@@ -36,7 +36,7 @@ def test_tc_cart_002_empty_cart_after_removing_all_products(
     assert cart_product_names == []
 
 @pytest.mark.cart
-def test_tc_cart_003_continue_shopping(
+def test_tc_cart_003_able_to_return_to_the_products_page_when_user_clicks_continue_shopping(
     products_page
 ):
     products_page.open_cart()
@@ -51,7 +51,7 @@ def test_tc_cart_003_continue_shopping(
     )
 
 @pytest.mark.cart
-def test_tc_cart_004_checkout_from_cart(
+def test_tc_cart_004_able_to_proceed_to_checkout_when_user_clicks_checkout_from_the_cart_page(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -68,7 +68,7 @@ def test_tc_cart_004_checkout_from_cart(
     )
 
 @pytest.mark.cart
-def test_tc_cart_005_cart_state_persistence(
+def test_tc_cart_005_verify_that_cart_items_persist_when_user_navigates_between_the_products_and_cart_pages(
     products_page
 ):
     product_name = products_page.add_product_to_cart()

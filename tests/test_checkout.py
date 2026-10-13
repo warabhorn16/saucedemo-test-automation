@@ -17,7 +17,7 @@ from test_data.checkout_data import (
 
 
 @pytest.mark.checkout
-def test_tc_checkout_001_complete_checkout_information(
+def test_tc_checkout_001_able_to_proceed_to_the_order_review_when_user_enters_valid_checkout_information(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -46,7 +46,7 @@ def test_tc_checkout_001_complete_checkout_information(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_002_checkout_with_empty_first_name(
+def test_tc_checkout_002_unable_to_continue_checkout_when_user_leaves_the_first_name_field_empty(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -83,7 +83,7 @@ def test_tc_checkout_002_checkout_with_empty_first_name(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_003_checkout_with_empty_last_name(
+def test_tc_checkout_003_unable_to_continue_checkout_when_user_leaves_the_last_name_field_empty(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -120,7 +120,7 @@ def test_tc_checkout_003_checkout_with_empty_last_name(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_004_checkout_with_empty_postal_code(
+def test_tc_checkout_004_unable_to_continue_checkout_when_user_leaves_the_postal_code_field_empty(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -157,7 +157,7 @@ def test_tc_checkout_004_checkout_with_empty_postal_code(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_005_verify_product_on_order_review(
+def test_tc_checkout_005_verify_that_the_order_review_displays_the_selected_product(
     products_page
 ):
     selected_product = products_page.get_product_information(1)[0]
@@ -188,7 +188,7 @@ def test_tc_checkout_005_verify_product_on_order_review(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_006_verify_product_quantity_on_order_review(
+def test_tc_checkout_006_verify_that_the_product_quantity_on_the_order_review_matches_the_cart(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -215,7 +215,7 @@ def test_tc_checkout_006_verify_product_quantity_on_order_review(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_007_verify_multiple_products_on_order_review(
+def test_tc_checkout_007_verify_that_all_selected_products_appear_on_the_order_review(
     products_page
 ):
     selected_products = products_page.get_product_information(2)
@@ -244,7 +244,7 @@ def test_tc_checkout_007_verify_multiple_products_on_order_review(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_008_verify_order_totals(
+def test_tc_checkout_008_verify_that_the_order_totals_are_calculated_correctly_on_the_order_review(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -274,7 +274,7 @@ def test_tc_checkout_008_verify_order_totals(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_009_cancel_checkout(
+def test_tc_checkout_009_able_to_cancel_checkout_when_user_clicks_cancel(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -303,7 +303,7 @@ def test_tc_checkout_009_cancel_checkout(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_010_complete_order(
+def test_tc_checkout_010_able_to_complete_the_order_when_user_clicks_finish(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -332,7 +332,7 @@ def test_tc_checkout_010_complete_order(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_011_verify_thank_you_message(
+def test_tc_checkout_011_verify_that_the_thank_you_message_is_displayed_after_order_completion(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -364,7 +364,7 @@ def test_tc_checkout_011_verify_thank_you_message(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_012_cart_empty_after_order(
+def test_tc_checkout_012_verify_that_the_cart_is_empty_after_order_completion(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -410,7 +410,7 @@ def test_tc_checkout_012_cart_empty_after_order(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_013_cart_badge_not_visible_after_order(
+def test_tc_checkout_013_verify_that_the_cart_badge_is_not_displayed_after_order_completion(
     products_page
 ):
     products_page.add_product_to_cart()
@@ -443,7 +443,7 @@ def test_tc_checkout_013_cart_badge_not_visible_after_order(
 
 
 @pytest.mark.checkout
-def test_tc_checkout_014_return_to_products_after_order(
+def test_tc_checkout_014_able_to_return_to_the_products_page_when_user_clicks_back_home_after_order_completion(
     products_page
 ):
     products_page.add_product_to_cart()

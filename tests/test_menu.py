@@ -8,7 +8,7 @@ from pages.cart_page import CartPage
 
 
 @pytest.mark.menu
-def test_tc_menu_001_open_side_menu(products_page):
+def test_tc_menu_001_able_to_open_the_side_menu_when_user_clicks_the_menu_button(products_page):
 
     menu_page = MenuPage(products_page.page)
 
@@ -21,7 +21,7 @@ def test_tc_menu_001_open_side_menu(products_page):
 
 
 @pytest.mark.menu
-def test_tc_menu_002_navigate_to_products_using_all_items(products_page):
+def test_tc_menu_002_able_to_navigate_to_the_products_page_when_user_selects_all_items_from_the_side_menu(products_page):
 
     menu_page = MenuPage(products_page.page)
 
@@ -38,7 +38,7 @@ def test_tc_menu_002_navigate_to_products_using_all_items(products_page):
 
 
 @pytest.mark.menu
-def test_tc_menu_003_navigate_to_about_page(products_page):
+def test_tc_menu_003_able_to_navigate_to_the_about_page_when_user_selects_about_from_the_side_menu(products_page):
 
     menu_page = MenuPage(products_page.page)
 
@@ -52,7 +52,7 @@ def test_tc_menu_003_navigate_to_about_page(products_page):
 
 
 @pytest.mark.menu
-def test_tc_menu_004_logout_from_application(products_page):
+def test_tc_menu_004_able_to_log_out_when_user_selects_logout_from_the_side_menu(products_page):
 
     menu_page = MenuPage(products_page.page)
 
@@ -72,7 +72,7 @@ def test_tc_menu_004_logout_from_application(products_page):
 
 
 @pytest.mark.menu
-def test_tc_menu_005_reset_app_state(products_page):
+def test_tc_menu_005_able_to_reset_the_application_state_when_user_selects_reset_app_state_from_the_side_menu(products_page):
 
     products_page.add_product_to_cart()
 

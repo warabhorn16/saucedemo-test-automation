@@ -13,7 +13,7 @@ from test_data.login_data import (
 )
 
 @pytest.mark.login
-def test_tc_login_001_login_with_valid_credentials(page, login_page):
+def test_tc_login_001_able_to_log_in_successfully_when_user_enters_valid_credentials(page, login_page):
 
     login_page.login(
         VALID_USERNAME,
@@ -25,7 +25,7 @@ def test_tc_login_001_login_with_valid_credentials(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_002_login_with_invalid_username(page, login_page):
+def test_tc_login_002_unable_to_log_in_when_user_enters_an_invalid_username(page, login_page):
 
     login_page.login(
         INVALID_USERNAME,
@@ -39,7 +39,7 @@ def test_tc_login_002_login_with_invalid_username(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_003_login_with_invalid_password(page, login_page):
+def test_tc_login_003_unable_to_log_in_when_user_enters_an_invalid_password(page, login_page):
 
     login_page.login(
         VALID_USERNAME,
@@ -53,7 +53,7 @@ def test_tc_login_003_login_with_invalid_password(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_004_login_with_invalid_username_and_password(page, login_page):
+def test_tc_login_004_unable_to_log_in_when_user_enters_an_invalid_username_and_password(page, login_page):
 
     login_page.login(
         INVALID_USERNAME,
@@ -67,7 +67,7 @@ def test_tc_login_004_login_with_invalid_username_and_password(page, login_page)
     )
 
 @pytest.mark.login
-def test_tc_login_005_login_with_empty_username(page, login_page):
+def test_tc_login_005_unable_to_log_in_when_user_leaves_the_username_field_empty(page, login_page):
 
     login_page.login(
         EMPTY_USERNAME,
@@ -81,7 +81,7 @@ def test_tc_login_005_login_with_empty_username(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_006_login_with_empty_password(page, login_page):
+def test_tc_login_006_unable_to_log_in_when_user_leaves_the_password_field_empty(page, login_page):
 
     login_page.login(
         VALID_USERNAME,
@@ -95,7 +95,7 @@ def test_tc_login_006_login_with_empty_password(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_007_login_with_empty_username_and_password(page, login_page):
+def test_tc_login_007_unable_to_log_in_when_user_leaves_both_username_and_password_fields_empty(page, login_page):
 
     login_page.login(
         EMPTY_USERNAME,
@@ -109,7 +109,7 @@ def test_tc_login_007_login_with_empty_username_and_password(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_008_login_with_locked_user(page, login_page):
+def test_tc_login_008_unable_to_log_in_when_user_enters_credentials_for_a_locked_out_user(page, login_page):
 
     login_page.login(
         LOCKED_USERNAME,
@@ -123,7 +123,7 @@ def test_tc_login_008_login_with_locked_user(page, login_page):
     )
 
 @pytest.mark.login
-def test_tc_login_009_unsuccessful_login_remains_on_login_page(page, login_page):
+def test_tc_login_009_verify_that_the_user_remains_on_the_login_page_when_login_fails(page, login_page):
 
     login_page.login(
         INVALID_USERNAME,

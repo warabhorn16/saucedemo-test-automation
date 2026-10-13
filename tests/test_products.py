@@ -7,7 +7,7 @@ from pages.product_detail_page import ProductDetailPage
 
 
 @pytest.mark.products
-def test_tc_product_001_verify_products_are_displayed(
+def test_tc_product_001_verify_that_products_are_displayed_on_the_products_page_after_successful_login(
     products_page
 ):
     expect(products_page.products_title).to_be_visible()
@@ -15,7 +15,7 @@ def test_tc_product_001_verify_products_are_displayed(
 
 
 @pytest.mark.products
-def test_tc_product_002_verify_product_information(
+def test_tc_product_002_verify_that_each_product_displays_its_name_description_price_and_image(
     products_page
 ):
     product_count = products_page.product_items.count()
@@ -39,7 +39,7 @@ def test_tc_product_002_verify_product_information(
 
 
 @pytest.mark.products
-def test_tc_product_003_sort_products_by_name_ascending(
+def test_tc_product_003_able_to_sort_products_by_name_in_ascending_order_when_user_selects_name_a_to_z(
     products_page
 ):
     products_page.sort_by_name_ascending()
@@ -51,7 +51,7 @@ def test_tc_product_003_sort_products_by_name_ascending(
 
 
 @pytest.mark.products
-def test_tc_product_004_sort_products_by_name_descending(
+def test_tc_product_004_able_to_sort_products_by_name_in_descending_order_when_user_selects_name_z_to_a(
     products_page
 ):
     products_page.sort_by_name_descending()
@@ -63,7 +63,7 @@ def test_tc_product_004_sort_products_by_name_descending(
 
 
 @pytest.mark.products
-def test_tc_product_005_sort_products_by_price_ascending(
+def test_tc_product_005_able_to_sort_products_by_price_in_ascending_order_when_user_selects_price_low_to_high(
     products_page
 ):
     products_page.sort_by_price_ascending()
@@ -79,7 +79,7 @@ def test_tc_product_005_sort_products_by_price_ascending(
 
 
 @pytest.mark.products
-def test_tc_product_006_sort_products_by_price_descending(
+def test_tc_product_006_able_to_sort_products_by_price_in_descending_order_when_user_selects_price_high_to_low(
     products_page
 ):
     products_page.sort_by_price_descending()
@@ -95,7 +95,7 @@ def test_tc_product_006_sort_products_by_price_descending(
 
 
 @pytest.mark.products
-def test_tc_product_007_add_product_to_cart(
+def test_tc_product_007_able_to_add_a_product_to_the_cart_when_user_clicks_add_to_cart(
     products_page
 ):
     product_name = products_page.add_product_to_cart()
@@ -109,7 +109,7 @@ def test_tc_product_007_add_product_to_cart(
 
 
 @pytest.mark.products
-def test_tc_product_008_add_multiple_products_to_cart(
+def test_tc_product_008_able_to_add_multiple_products_to_the_cart_when_user_clicks_add_to_cart_for_each_product(
     products_page
 ):
     selected_product_names = (
@@ -128,7 +128,7 @@ def test_tc_product_008_add_multiple_products_to_cart(
 
 
 @pytest.mark.products
-def test_tc_product_009_add_to_cart_button_changes_to_remove(
+def test_tc_product_009_verify_that_the_add_to_cart_button_changes_to_remove_after_a_product_is_added(
     products_page
 ):
     remove_button = (
@@ -139,7 +139,7 @@ def test_tc_product_009_add_to_cart_button_changes_to_remove(
 
 
 @pytest.mark.products
-def test_tc_product_010_remove_product_from_products_page(
+def test_tc_product_010_able_to_remove_a_product_from_the_cart_when_user_clicks_remove_on_the_products_page(
     products_page
 ):
     product_name = products_page.add_product_to_cart()
@@ -162,7 +162,7 @@ def test_tc_product_010_remove_product_from_products_page(
 
 
 @pytest.mark.products
-def test_tc_product_011_navigate_to_cart(
+def test_tc_product_011_able_to_open_the_cart_page_when_user_clicks_the_cart_icon(
     products_page
 ):
     products_page.open_cart()
@@ -173,7 +173,7 @@ def test_tc_product_011_navigate_to_cart(
 
 
 @pytest.mark.products
-def test_tc_product_012_cart_badge_after_adding_products(
+def test_tc_product_012_verify_that_the_cart_badge_displays_the_correct_item_count_after_products_are_added(
     products_page
 ):
     products_page.add_multiple_products_to_cart(2)
@@ -182,7 +182,7 @@ def test_tc_product_012_cart_badge_after_adding_products(
 
 
 @pytest.mark.products
-def test_tc_product_013_cart_badge_after_removing_product(
+def test_tc_product_013_verify_that_the_cart_badge_updates_correctly_after_a_product_is_removed(
     products_page
 ):
     products_page.add_multiple_products_to_cart(2)
@@ -193,7 +193,7 @@ def test_tc_product_013_cart_badge_after_removing_product(
 
 
 @pytest.mark.products
-def test_tc_product_014_open_product_detail_page(
+def test_tc_product_014_able_to_open_a_product_detail_page_when_user_clicks_a_product_name_or_image(
     products_page
 ):
     selected_product_name = products_page.open_product_detail()
@@ -205,7 +205,7 @@ def test_tc_product_014_open_product_detail_page(
 
 
 @pytest.mark.products
-def test_tc_product_015_verify_product_information(
+def test_tc_product_015_verify_that_the_product_detail_page_displays_the_selected_product_information_correctly(
     products_page
 ):
     selected_products = products_page.get_product_information(1)
@@ -234,7 +234,7 @@ def test_tc_product_015_verify_product_information(
 
 
 @pytest.mark.products
-def test_tc_product_016_add_product_to_cart_from_product_detail(
+def test_tc_product_016_able_to_add_a_product_to_the_cart_from_the_detail_page_when_user_clicks_add_to_cart(
     products_page
 ):
     products_page.open_product_detail()
@@ -246,7 +246,7 @@ def test_tc_product_016_add_product_to_cart_from_product_detail(
 
 
 @pytest.mark.products
-def test_tc_product_017_return_to_products_from_product_detail(
+def test_tc_product_017_able_to_return_to_the_products_page_when_user_clicks_back_to_products(
     products_page
 ):
     products_page.open_product_detail()
@@ -258,7 +258,7 @@ def test_tc_product_017_return_to_products_from_product_detail(
 
 
 @pytest.mark.products
-def test_tc_product_018_remove_product_from_cart_from_product_detail(
+def test_tc_product_018_able_to_remove_a_product_from_the_cart_from_the_detail_page_when_user_clicks_remove(
     products_page
 ):
     products_page.open_product_detail()
