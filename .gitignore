@@ -25,3 +25,6 @@ playwright-report/
 
 # Temporary files
 *.log
+
+# Playwright MCP session artifacts
+.playwright-mcp/

@@ -2,9 +2,11 @@
 
 [![Playwright UI Tests](https://github.com/warabhorn16/saucedemo-test-automation/actions/workflows/tests.yml/badge.svg)](https://github.com/warabhorn16/saucedemo-test-automation/actions/workflows/tests.yml)
 
-A UI test automation project built with **Python, Playwright, and Pytest** to validate the core shopping workflows of the SauceDemo web application.
+A UI test automation portfolio project built with **Python, Playwright, and Pytest** to validate the core shopping workflows of the SauceDemo web application.
 
 This project demonstrates practical QA Automation skills, including test case design, Page Object Model (POM), reusable test components, test data management, regression testing, failure screenshot capture, HTML test reporting, and Continuous Integration (CI) with GitHub Actions.
+
+In addition to traditional UI automation, this project explores **AI-assisted browser testing using Playwright MCP and GitHub Copilot Agent**. This allows an AI agent to interact with the browser, inspect page elements and browser states, perform user interactions, and evaluate observed behavior against expected results.
 
 ## Project Overview
 
@@ -17,10 +19,11 @@ This project demonstrates practical QA Automation skills, including test case de
 | Test Framework | Pytest |
 | Design Pattern | Page Object Model (POM) |
 | Test Data Management | Separate test data modules |
-| Test Reporting | Pytest HTML |
+| Test Reporting | pytest-html |
 | CI/CD | GitHub Actions |
 | Browser | Chromium |
 | Total Automated Test Cases | 51 |
+| AI-Assisted Testing | Playwright MCP and GitHub Copilot Agent |
 
 ## Objectives
 
@@ -31,6 +34,8 @@ This project demonstrates practical QA Automation skills, including test case de
 - Capture screenshots when test execution fails.
 - Generate HTML test reports for reviewing test results.
 - Execute automated regression tests through GitHub Actions.
+- Explore AI-assisted browser testing using Playwright MCP.
+- Evaluate test outcomes based on browser evidence and expected results.
 
 ## Test Coverage
 
@@ -45,7 +50,7 @@ The project contains **51 automated test cases** across five test modules.
 | Menu | 5 | Navigation menu, application links, logout, and application state reset |
 | **Total** | **51** | |
 
-The test suite covers both successful workflows and relevant error-handling scenarios to validate expected application behavior.
+The test suite covers successful workflows and relevant error-handling scenarios to validate expected application behavior.
 
 ## Test Case Portfolio
 
@@ -72,6 +77,8 @@ The workbook includes:
 - **Page Object Model (POM)** — Separates page locators and actions from test logic.
 - **Git and GitHub** — Version control and source code management.
 - **GitHub Actions** — Automated test execution on pushes and pull requests.
+- **Playwright MCP** — Provides browser interaction tools that an AI agent can use.
+- **GitHub Copilot Agent** — AI agent used with Playwright MCP for browser exploration and interactive testing.
 
 ## Project Structure
 
@@ -80,6 +87,8 @@ saucedemo-test-automation/
 ├── .github/
 │   └── workflows/
 │       └── tests.yml
+├── .playwright-mcp/
+│   └── MCP-generated browser files
 ├── pages/
 │   ├── base_page.py
 │   ├── cart_page.py
@@ -107,6 +116,8 @@ saucedemo-test-automation/
 ├── README.md
 └── requirements.txt
 ```
+
+The `.playwright-mcp/` directory contains files generated during MCP-assisted browser exploration and testing. Review its contents before committing them to GitHub, and exclude temporary files, sensitive information, or unnecessary session artifacts.
 
 ## Test Automation Design
 
@@ -158,6 +169,39 @@ The project uses `pytest-html` to generate a self-contained HTML report containi
 
 The report can be generated locally and opened in a browser for review.
 
+## AI-Assisted Testing with Playwright MCP
+
+This project explores **Playwright MCP and GitHub Copilot Agent** alongside the existing Python and Pytest automation framework.
+
+Playwright MCP provides browser interaction tools that an AI agent can use to inspect and interact with a web application.
+
+The AI-assisted browser testing workflow includes:
+
+- **Browser Navigation:** Opening the application and navigating to the target page.
+- **Page Inspection:** Reviewing page snapshots and identifying interactive elements.
+- **Browser Interaction:** Filling form fields and clicking buttons.
+- **State Verification:** Observing page states, URLs, and application responses after interactions.
+- **Expected Result Validation:** Comparing observed behavior against the expected outcome of a test scenario.
+- **Evidence-Based Reporting:** Reviewing tool calls, tool results, and page snapshots to support test conclusions.
+
+This exploration provides practical experience in using AI agents for browser-based testing, writing clear test instructions, defining expected results, and evaluating evidence rather than relying solely on AI-generated summaries.
+
+### Relationship to the Existing Automation Framework
+
+The project uses two complementary approaches:
+
+**Python + Playwright + Pytest**
+
+A structured, executable UI automation suite designed for repeatable testing and regression testing.
+
+**Playwright MCP + GitHub Copilot Agent**
+
+An AI-assisted approach for browser exploration, interactive test execution, and observation of application behavior.
+
+MCP-assisted test runs are separate from the 51 Pytest automated test cases. They are not counted as additional Pytest tests unless the scenarios are separately implemented in the executable test suite.
+
+The `.playwright-mcp/` directory contains files generated during MCP-assisted browser exploration and testing. These files are separate from the main Python test modules.
+
 ## Continuous Integration with GitHub Actions
 
 GitHub Actions is configured to run the automated test suite when code is pushed to the `main` branch or when a pull request targets `main`.
@@ -169,11 +213,11 @@ The workflow performs the following steps:
 3. Installs project dependencies.
 4. Installs Chromium and its required system dependencies.
 5. Runs the Pytest test suite.
-6. Uploads failure screenshot artifacts when the workflow fails.
+6. Uploads failure screenshot artifacts when the workflow fails, according to the workflow configuration.
 
 **Workflow configuration:** `.github/workflows/tests.yml`
 
-View workflow executions and test results on the [GitHub Actions page](https://github.com/warabhorn16/saucedemo-test-automation/actions).
+[View GitHub Actions Workflow Runs](https://github.com/warabhorn16/saucedemo-test-automation/actions)
 
 ## Getting Started
 
@@ -211,13 +255,15 @@ pip install -r requirements.txt
 playwright install chromium
 ```
 
-### 4. Run All Tests
+## Running Tests
+
+### 1. Run All Tests
 
 ```bash
 pytest -v
 ```
 
-### 5. Run a Specific Test Module
+### 2. Run a Specific Test Module
 
 Run login tests:
 
@@ -231,7 +277,13 @@ Run checkout tests:
 pytest tests/test_checkout.py -v
 ```
 
-### 6. Generate an HTML Test Report
+### 3. Run Tests with a Visible Browser
+
+```bash
+pytest -v --headed
+```
+
+### 4. Generate an HTML Test Report
 
 Create the reports directory if it does not exist:
 
@@ -247,17 +299,13 @@ pytest -v --html=reports/report.html --self-contained-html
 
 Open `reports/report.html` in a browser to review the test results.
 
-### 7. Run Tests with a Visible Browser
-
-```bash
-pytest -v --headed
-```
-
 ## Test Results and Artifacts
 
-Test execution results can be reviewed through the local Pytest output and HTML report.
+Test execution results can be reviewed through the local Pytest output and generated HTML report.
 
-Failure screenshots are saved locally under `test-results/screenshots/`. The GitHub Actions workflow is intended to upload failure screenshot artifacts when a workflow fails; refer to the workflow run to verify artifact availability.
+Failure screenshots are saved locally under `test-results/screenshots/`.
+
+The GitHub Actions workflow is intended to upload failure screenshot artifacts when a workflow fails. Refer to the workflow run to verify artifact availability.
 
 Test reports and screenshots are not committed to the repository by default.
 
@@ -271,6 +319,8 @@ Test reports and screenshots are not committed to the repository by default.
 - Pytest fixtures and test organization
 - Test data separation and reuse
 - HTML test reporting and failure investigation
+- Browser inspection and evidence-based evaluation
+- AI-assisted testing with Playwright MCP
 - Git and GitHub version control
 - CI automation using GitHub Actions
 
